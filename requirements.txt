@@ -3,4 +3,5 @@ mplcursors==0.5.3
 seaborn==0.13.2
 streamlit==1.32.2
 plotly==5.20.0
-
+ipython==8.12.3
+ipywidgets==8.0.6
