@@ -12,7 +12,7 @@ import seaborn as sns
 
 @st.cache_data
 def load_data():
-	link = "D:\dataset_bakery\Bakery.csv"
+	link = "Bakery.csv"
 	df = pd.read_csv(link)
 	df['DateTime'] = pd.to_datetime(df['DateTime'])
 	df['Date'] = df['DateTime'].dt.date
