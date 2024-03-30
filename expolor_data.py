@@ -27,7 +27,25 @@ df = load_data()
 
 
 def show_page():
+	df = load_data()
+
 	st.title(" Hello welcome to my dashboard")
+
+
+	st.write("Select a date range to filter the data:")
+
+	# Date range selection
+	start_date = st.date_input("Start Date")
+	end_date = st.date_input("End Date")
+
+	# Filter the data based on the selected date range or use the whole dataset
+	if start_date != 0 and end_date != 0:
+	    df = df[
+	        (df['DateTime'].dt.date >= start_date) &
+	        (df['DateTime'].dt.date <= end_date)
+	    ]
+	else:
+	    df = df.copy()
 	st.write(
 		"""
 
@@ -249,3 +267,5 @@ def show_page():
 
 	# Display the chart in Streamlit
 	st.plotly_chart(fig)
+
+	st.experimental_rerun()
