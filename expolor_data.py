@@ -57,7 +57,7 @@ def show_page():
 			### display pie chart
 
 			""")
-		data = df["Items"].value_counts()
+		data = df["Items"].value_counts().nlargest(10)
 		fig1, ax1 = plt.subplots()
 		ax1.pie(data,labels=data.index,autopct="1.1f%%",shadow=True, startangle=90)
 		ax1.axis("equal")
@@ -71,9 +71,12 @@ def show_page():
 					### bar chart
 				"""
 			)
+		top_items_df = df[df["Items"].isin(data.index)]
+
+	
 
 		# Assuming you have a DataFrame named 'df' with 'Items' and 'Daypart' columns
-		data = df.groupby(['Daypart', 'Items']).size().unstack()
+		data = top_items_df.groupby(['Daypart', 'Items']).size().unstack()
 
 		# Create a grouped bar chart
 		fig, ax = plt.subplots()
