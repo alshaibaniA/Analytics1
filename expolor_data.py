@@ -5,6 +5,8 @@ import mplcursors
 #import mpldatacursor
 import plotly.express as px
 import seaborn as sns
+from Show_data import show_data
+
 
 
 
@@ -276,4 +278,5 @@ def show_page():
 		# Display the chart in Streamlit
 		st.plotly_chart(fig)
 
-		st.experimental_rerun()
+		#st.experimental_rerun()
+	show_data(df)
